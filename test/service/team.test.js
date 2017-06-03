@@ -12,7 +12,7 @@ let team = [
 let mock = require('../mock/repository') (team);
 let service = require('../../services/team') (mock);
 
-describe('teams', () => {
+describe('teams:', () => {
     it('getTeams()', async () => {
         let array = await service.getTeams({ limit: 10, offset: 1 });
         expect(mock.findAll).toHaveBeenCalled();
