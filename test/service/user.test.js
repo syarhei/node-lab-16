@@ -31,4 +31,14 @@ describe('users:', () => {
         let error = await service.getCommonTime(4,5);
         expect(error).toBe('No common time');
     });
+    it('addUser()', async () => {
+        let object = await service.addUser(user[0]);
+        expect(mock.create).toHaveBeenCalled();
+        expect(object).toBe(user[0]);
+    });
+    it('deleteUser()', async () => {
+        let object = await service.deleteUser({ id: 1 });
+        expect(mock.destroy).toHaveBeenCalled();
+        expect(object).toBe(1);
+    });
 });

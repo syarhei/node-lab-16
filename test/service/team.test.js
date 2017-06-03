@@ -18,4 +18,13 @@ describe('teams:', () => {
         expect(mock.findAll).toHaveBeenCalled();
         expect(array).toEqual(team);
     });
+    it('addTeam()', async () => {
+        let object = await service.addTeam(team[0]);
+        expect(object).toBe(team[0]);
+    });
+    it('deleteTeam()', async () => {
+        let object = await service.deleteTeam({ id: 1 });
+        expect(mock.destroy).toHaveBeenCalled();
+        expect(object).toBe(1);
+    });
 });

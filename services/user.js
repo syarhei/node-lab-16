@@ -5,6 +5,8 @@ module.exports = (user) => {
         this.getUsers = getUsers;
         this.getCurrentState = getCurrentState;
         this.getCommonTime = getCommonTime;
+        this.addUser = addUser;
+        this.deleteUser = deleteUser;
 
         function getUserByID(id) {
             return new Promise((resolve, reject) => {
@@ -71,6 +73,20 @@ module.exports = (user) => {
                         time += ' - ' + finishWork1.getHours() + ':' + finishWork1.getMinutes();
                     resolve(time);
                 }).catch(reject);
+            })
+        }
+
+        function addUser(object) {
+            return new Promise((resolve, reject) => {
+                user.create(object).then(resolve).catch(reject);
+            })
+        }
+
+        function deleteUser(options) {
+            return new Promise((resolve, reject) => {
+                user.destroy({ where: {
+                    id: options.id
+                }}).then(resolve).catch(reject);
             })
         }
     }
