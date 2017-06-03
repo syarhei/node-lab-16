@@ -12,9 +12,9 @@
   },
   "pg": {
     "dialect": "postgres",
-    "host": "ec2-54-235-72-121.compute-1.amazonaws.com",
-    "name": "d1r2sjdh26dq8e",
-    "user": "lzzwqmuivsrlto",
-    "password": "0257b01550ff6a1a20e720d44080e41dfe1f6019aa2d8e02d5de65b51b2e1e0d"
+    "host": "ec2-107-21-248-129.compute-1.amazonaws.com",
+    "name": "d6taa5pq5jr17p",
+    "user": "mjuslktwmzkmxy",
+    "password": "0c79046ed52f7d8aa25e38fe5d4418f97625308a0f63f11f4860c3554196227a"
   }
 }

@@ -7,7 +7,7 @@
 module.exports = (data) => {
     const mock = {
         findAll: jest.fn((params) => Promise.resolve(data)),
-        findById: jest.fn((id) => Promise.resolve(data[id])),
+        findById: jest.fn((id) => Promise.resolve(data[0])),
         create: jest.fn((data) => Promise.resolve(data)),
         update: jest.fn((data) => Promise.resolve([1, data])),
         destroy: jest.fn((params) => Promise.resolve(1))
