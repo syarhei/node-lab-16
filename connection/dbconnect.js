@@ -8,21 +8,18 @@ module.exports = (Sequelize) => {
         dialect: cf.dialect,
         logging: false,
         define: {
-            timestamps: true,
-            paranoid: true,
-            defaultScope: {
-                where: {
-                    deletedAt: { $eq: null }
-                }
-            }
+            paranoid: false,
+            timestamps: false
         }
     };
 
     const sequelize = new Sequelize(cf.name, cf.user, cf.password, options);
     const team = require('../models/team') (Sequelize, sequelize);
-    const user = require('../models/user')(Sequelize, sequelize,team);
+    const user = require('../models/user') (Sequelize, sequelize, team);
+    const contact = require('../models/contact') (Sequelize, sequelize, user);
 
     return {
+        contact: contact,
         user: user,
         team: team,
         sequelize: sequelize
