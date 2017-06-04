@@ -17,6 +17,14 @@ app.use(cookie_parser());
 
 const db_connect = require('./connection/dbconnect') (sequelize);
 
+let teamService = require('./services/team') (db_connect.team);
+let userService = require('./services/user') (db_connect.user);
+let contactService = require('./services/contact') (db_connect.contact);
+
+let api = require('./controllers/api') (teamService, userService, contactService);
+
+app.use('/api', api);
+
 db_connect.sequelize.sync().then(
     () => {
         app.listen(process.env.PORT || 3300, () => {
