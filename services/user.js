@@ -51,7 +51,7 @@ module.exports = (user) => {
         }
 
         function getCommonTime(id1, id2) {
-            let time;
+            let time, start, finish;
             return new Promise((resolve, reject) => {
                 let promise = Promise.all([ getUserByID(id1), getUserByID(id2) ]);
                 promise.then((users) => {
@@ -64,14 +64,14 @@ module.exports = (user) => {
                     if (startWork1 > startWork2 && startWork1 > finishWork2)
                         resolve('No common time');
                     if (startWork1 > startWork2)
-                        time = startWork1.getHours() + ':' + startWork1.getMinutes();
+                        start = startWork1.getHours() + ':' + startWork1.getMinutes();
                     else
-                        time = startWork2.getHours() + ':' + startWork2.getMinutes();
+                        start = startWork2.getHours() + ':' + startWork2.getMinutes();
                     if (finishWork1 > finishWork2)
-                        time += ' - ' + finishWork2.getHours() + ':' + finishWork2.getMinutes();
+                        finish = finishWork2.getHours() + ':' + finishWork2.getMinutes();
                     else
-                        time += ' - ' + finishWork1.getHours() + ':' + finishWork1.getMinutes();
-                    resolve(time);
+                        finish = finishWork1.getHours() + ':' + finishWork1.getMinutes();
+                    resolve({ start: start, finish: finish });
                 }).catch(reject);
             })
         }

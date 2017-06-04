@@ -27,7 +27,7 @@ describe('users:', () => {
     });
     it('getCommonTime()', async () => {
         let time = await service.getCommonTime(1,2);
-        expect(time).toBe('15:39 - 17:33');
+        expect(time).toEqual({ start: '15:39', finish: '17:33' });
         let error = await service.getCommonTime(4,5);
         expect(error).toBe('No common time');
     });
